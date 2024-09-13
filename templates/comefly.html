@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% block title %}
+    Onboarding
+{% endblock %}
+{% block content %}
+    <!-- Error Message -->
+    {% if error_statement %}
+        <div class="bg-yellow-100 border border-yellow-500 text-yellow-700 px-4 py-3 rounded relative mb-6" role="alert">
+            <strong class="font-bold">Warning!</strong>
+            <span class="block sm:inline">{{ error_statement }}</span>
+            <button type="button" class="absolute top-0 right-0 px-4 py-3" aria-label="Close">
+                <svg class="fill-current text-yellow-500" width="20" height="20" viewBox="0 0 20 20">
+                    <path d="M10 8.586l4.95-4.95a.75.75 0 111.061 1.061L11.061 9.646l4.95 4.95a.75.75 0 01-1.061 1.061L10 10.707 5.05 15.657a.75.75 0 01-1.061-1.061l4.95-4.95-4.95-4.95A.75.75 0 015.05 3.636L10 8.586z"></path>
+                </svg>
+            </button>
+        </div>
+    {% endif %}
+
+    <!-- Form Container -->
+    <div class="max-w-lg mx-auto p-6 bg-gray-800 bg-opacity-50 shadow-lg rounded-lg">
+        <h1 class="text-3xl font-bold mb-6 text-white">Get onboard!</h1>
+        <form action="{{ url_for('flyStatus.fly_status') }}" method="POST">
+            <!-- Name Field -->
+            <fieldset class="mb-4 border border-gray-300 rounded-md p-4">
+                <legend class="text-white text-sm font-semibold px-2">Name:</legend>
+                <input type="text" id="name" name="name" value="{{ name }}" class="w-full p-2 border border-gray-300 rounded-md" placeholder="Enter your name" required>
+            </fieldset>
+
+            <!-- Age Field -->
+            <fieldset class="mb-4 border border-gray-300 rounded-md p-4">
+                <legend class="text-white text-sm font-semibold px-2">Age:</legend>
+                <input type="number" id="age" name="age" value="{{ age }}" step="1" min="0" class="w-full p-2 border border-gray-300 rounded-md" placeholder="Enter your age" required>
+            </fieldset>
+
+            <!-- Height Field -->
+            <fieldset class="mb-4 border border-gray-300 rounded-md p-4">
+                <legend class="text-white text-sm font-semibold px-2">Height (ft):</legend>
+                <select id="height-feet" name="height" class="w-full p-2 border border-gray-300 rounded-md">
+                  <option value="" disabled selected>Select height</option>
+                    <option value="4">4ft</option>
+                    <option value="4'5">4'5ft</option>
+                    <option value="5">5ft</option>
+                    <option value="5'2">5'2ft</option>
+                    <option value="5'3">5'3ft</option>
+                    <option value="5'4">5'4ft</option>
+                    <option value="5'5">5'5ft</option>
+                    <option value="5'6">5'6ft</option>
+                    <option value="5'7">5'7ft</option>
+                    <option value="5'8">5'8ft</option>
+                    <option value="6">6ft</option>
+                    <option value="6'2">6'2ft</option>
+                    <option value="6'3">6'3ft</option>
+                    <option value="6'4">6'4ft</option>
+                    <option value="6'5">6'5ft</option>
+                </select>
+            </fieldset>
+
+            <!-- Weight Field -->
+            <fieldset class="mb-4 border border-gray-300 rounded-md p-4">
+                <legend class="text-white text-sm font-semibold px-2">Weight (kg):</legend>
+                <input type="number" id="weight" name="weight" value="{{ weight }}" min="40" class="w-full p-2 border border-gray-300 rounded-md" placeholder="Enter your weight" required>
+            </fieldset>
+
+            <!-- Region Selection -->
+            <fieldset class="mb-4 border border-gray-300 rounded-md p-4">
+                <legend class="text-white text-sm font-semibold px-2">Select Region:</legend>
+                <div class="flex gap-4">
+                    <label class="inline-flex items-center">
+                        <input type="radio" id="Africa" name="region" value="Africa" class="form-radio text-green-600" {{ 'checked' if region == 'Africa' }}>
+                        <span class="ml-2 text-white">Africa</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="radio" id="America" name="region" value="America" class="form-radio text-green-600" {{ 'checked' if region == 'America' }}>
+                        <span class="ml-2 text-white">America</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="radio" id="Europe" name="region" value="Europe" class="form-radio text-green-600" {{ 'checked' if region == 'Europe' }}>
+                        <span class="ml-2 text-white">Europe</span>
+                    </label>
+                </div>
+            </fieldset>
+
+            <!-- Submit Button -->
+            <div class="mb-4">
+                <button type="submit" class="w-full bg-green-900 text-white py-2 px-4 rounded-md font-bold">Submit</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Admin Dashboard
+{% endblock %}
+
+{% block content %}
+<div class="text-left px-4">
+    <p class="text-white text-2xl mb-4">Admin Dashboard</p>
+    <a href="/admin/create-meal-plan">
+        <button class="p-2 bg-green-900 text-white mb-4 rounded">Add a meal plan</button>
+    </a>
+    <button class="p-2 bg-blue-900 text-white mb-4 rounded">Add an activity plan</button>
+    
+    <div class="bg-white shadow-md rounded p-6">
+        <h1 class="text-xl font-bold mb-4">Meal Plans</h1>
+        
+        {% if meal_plans %}
+        <div class="overflow-x-auto">
+            <table class="min-w-full bg-white border border-gray-300">
+                <thead class="bg-gray-100">
+                    <tr>
+                        <th class="py-2 px-4 border-b">ID</th>
+                        <th class="py-2 px-4 border-b">Breakfast</th>
+                        <th class="py-2 px-4 border-b">Lunch</th>
+                        <th class="py-2 px-4 border-b">Dinner</th>
+                        <th class="py-2 px-4 border-b">Region</th>
+                        <th class="py-2 px-4 border-b">BMI Category</th>
+                        <th class="py-2 px-4 border-b">Day of the Week</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for meal_plan in meal_plans %}
+                    <tr>
+                        <td class="py-2 px-4 border-b">{{ meal_plan.id }}</td>
+                        <td class="py-2 px-4 border-b">{{ meal_plan.breakfast }}</td>
+                        <td class="py-2 px-4 border-b">{{ meal_plan.lunch }}</td>
+                        <td class="py-2 px-4 border-b">{{ meal_plan.dinner }}</td>
+                        <td class="py-2 px-4 border-b">{{ meal_plan.region }}</td>
+                        <td class="py-2 px-4 border-b">{{ meal_plan.bmi_category }}</td>
+                        <td class="py-2 px-4 border-b">{{ meal_plan.day_of_week }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <p class="text-center text-gray-500 mt-4">No meal plan created yet.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

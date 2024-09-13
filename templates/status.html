@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}
+Fly Status
+{% endblock %}
+
+{% block content %}
+<div class="text-white bg-gray-800 p-4 bg-opacity-50 rounded-lg m-auto flex flex-col gap-2" style="width: fit-content;">
+    <h1 class="font-bold text-2xl">Know your status!</h1>
+    <p>Hello, {{ name }}!</p>
+    <p>Your BMI is {{ bmi }} and you are {{ category }}.</p>
+    <form class="flex flex-col gap-2" action="{{ url_for('gofly.go_fly', name=name) }}" method="GET">
+        <div><input type="checkbox" id="agreeCheckbox" onchange="enableButton()"> I agree to get a meal plan and workout</div>
+        activities<br>
+        <button type="submit" id="submitButton" class="bg-green-800 hover:bg-green-900 p-2 rounded-lg" disabled>Get a meal plan</button>
+    </form>
+</div>
+
+
+<script>
+    function enableButton() {
+        document.getElementById("submitButton").disabled = !document.getElementById("agreeCheckbox").checked;
+    }
+</script>
+{% endblock %}

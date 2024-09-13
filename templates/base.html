@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>
+        {% block title %}
+        {% endblock %}
+    </title>
+    <style>
+      #mobile-menu {
+        transition: transform 0.3s ease;
+        transform: translateX(-100%);
+      }
+      #mobile-menu.open {
+        transform: translateX(0);
+      }
+    </style>
+  </head>
+  <body class="text-gray-900 bg-cover min-h-screen bg-center bg-no-repeat relative" style="background-image: url('static/images/bg-1.jpg');">
+    <!-- Black overlay -->
+    <div class="absolute inset-0 h-[100%] bg-black opacity-50" style="z-index: 0;"></div>
+
+    <!-- Header -->
+    <header class="bg-transparent shadow-md relative" style="z-index: 10;">
+      <nav class="container mx-auto p-4 flex justify-between items-center">
+        <div class="flex items-center">
+          <p class="text-2xl font-bold text-white mr-4">MadeFly</p>
+        </div>
+        <div class="flex items-center">
+          <div class="hidden md:flex space-x-6" id="navbarNav">
+            <a class="text-gray-200 hover:text-white" href="{{ url_for('home.home') }}">Home</a>
+            <a class="text-gray-200 hover:text-white" href="{{ url_for('comefly.come_fly') }}">Comefly</a>
+            <a class="text-gray-200 hover:text-white" href="{{ url_for('aboutUs.about_us') }}">About us</a>
+            <a class="text-gray-200 hover:text-white" href="/admin_login">Admin login</a>
+          </div>
+          <button class="md:hidden text-gray-200 focus:outline-none" id="navbar-toggle">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+          </button>
+        </div>
+      </nav>
+      <div id="mobile-menu" class="md:hidden bg-gray-800 p-2 absolute top-0 left-0 h-screen w-60" style="z-index: 999;">
+        <div class="mb-[10px]">
+          <p class="text-gray-600 text-2xl">MadeFly</p>
+        </div>
+        <a class="block text-gray-200 hover:text-white p-2" href="{{ url_for('home.home') }}">Home</a>
+        <a class="block text-gray-200 hover:text-white p-2" href="{{ url_for('comefly.come_fly') }}">Comefly</a>
+        <a class="block text-gray-200 hover:text-white p-2" href="{{ url_for('aboutUs.about_us') }}">About us</a>
+        <a class="block text-gray-200 hover:text-white p-2" href="{{url_for('adminLogin.admin_login')}}">Admin login</a>
+      </div>
+    </header>
+
+    <main class="container mx-auto py-8 text-center relative">
+      {% block content %}
+      {% endblock %}
+    </main>
+
+    <!-- Optional JavaScript -->
+    <!-- <script src="{{ url_for('static', filename='scripts/navbar_toggle.js') }}"></script> -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script>
+      // Toggle mobile menu
+      const toggleButton = document.getElementById('navbar-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+
+      toggleButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('open');
+      });
+
+      // Optional: Close the menu if clicked outside
+      document.addEventListener('click', (event) => {
+        if (!mobileMenu.contains(event.target) && !toggleButton.contains(event.target)) {
+          mobileMenu.classList.remove('open');
+        }
+      });
+    </script>
+  </body>
+</html>
