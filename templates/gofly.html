@@ -1,34 +1,71 @@
-
 {% extends 'base.html' %}
+
 {% block title %}
     Ready to fly
 {% endblock %}
+
 {% block content %}
-    <h1>Ready to fly!</h1>
-    <table class="table table-hover table-dark">
-        <thead>
-            <tr>
-                <!-- Your Columns HERE -->
-                <th scope="col">Id</th>
-                <th scope="col">Day</th>
-                <th scope="col">Breakfast</th>
-                <th scope="col">Lunch</th>
-                <th scope="col">Dinner</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Your rows inside the table HERE: -->
-            {% for item in items %}
-                <tr>
-                    <td>{{ item.id }}</td>
-                    <td>{{ item.Day }}</td>
-                    <td>{{ item.Breakfast }}</td>
-                    <td>{{ item.Lunch }}</td>
-                    <td>{{ item.Dinner }}</td>
-                </tr>
-            {% endfor%}
-        </tbody>
-    </table>
-        </tbody>
-    </table>
+    <div class="text-left px-4">
+        <h1 class="text-2xl font-bold mb-4">Ready to Fly!</h1>
+
+        <div class="bg-white shadow-md rounded p-6 mb-4">
+            <h2 class="text-xl font-semibold mb-2">Meal Plans</h2>
+            <div class="overflow-x-auto">
+                <table class="min-w-full bg-white border border-gray-300">
+                    <thead class="bg-gray-100">
+                        <tr>
+                            <th class="py-2 px-4 border-b">Day</th>
+                            <th class="py-2 px-4 border-b">Breakfast</th>
+                            <th class="py-2 px-4 border-b">Lunch</th>
+                            <th class="py-2 px-4 border-b">Dinner</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for meal in meal_plans %}
+                            <tr>
+                                <td class="py-2 px-4 border-b">{{ meal.day_of_week }}</td>
+                                <td class="py-2 px-4 border-b">{{ meal.breakfast }}</td>
+                                <td class="py-2 px-4 border-b">{{ meal.lunch }}</td>
+                                <td class="py-2 px-4 border-b">{{ meal.dinner }}</td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="5" class="text-center py-2">No meal plans available yet.</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="bg-white shadow-md rounded p-6">
+            <h2 class="text-xl font-semibold mb-2">Activity Plans</h2>
+            <div class="overflow-x-auto">
+                <table class="min-w-full bg-white border border-gray-300">
+                    <thead class="bg-gray-100">
+                        <tr>
+                            <th class="py-2 px-4 border-b">Day</th>
+                            <th class="py-2 px-4 border-b">Morning</th>
+                            <th class="py-2 px-4 border-b">Evening</th>
+                            <th class="py-2 px-4 border-b">BMI Category</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for activity in activity_plans %}
+                            <tr>
+                                <td class="py-2 px-4 border-b">{{ activity.day_of_week }}</td>
+                                <td class="py-2 px-4 border-b">{{ activity.morning }}</td>
+                                <td class="py-2 px-4 border-b">{{ activity.evening }}</td>
+                                <td class="py-2 px-4 border-b">{{ activity.bmi_category }}</td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="5" class="text-center py-2">No activity plans available yet.</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 {% endblock %}

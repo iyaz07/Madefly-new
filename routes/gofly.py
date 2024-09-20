@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template
-from models import db, MealPlan, User
+from models import db, MealPlan, User, ActivityPlan
 
 gofly_bp = Blueprint('gofly', __name__)
 
@@ -14,7 +14,7 @@ def go_fly(name):
 
     # Retrieve user meal plans and activity plans
     meal_plans = MealPlan.query.filter_by(bmi_category=user.bmi_category, region=user.region).limit(7).all()
-    activity_plans = user.activity_plans
+    activity_plans = ActivityPlan.query.filter_by(bmi_category=user.bmi_category).limit(7).all()
 
     # Render the template with the retrieved data
-    return render_template('status.html', user=user, meal_plans=meal_plans, activity_plans=activity_plans)
+    return render_template('gofly.html', user=user, meal_plans=meal_plans, activity_plans=activity_plans)

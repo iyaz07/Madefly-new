@@ -7,6 +7,7 @@ from routes.home import home_bp
 from routes.admin_login import admin_login_bp
 from routes.admin_dashboard import admin_dashboard_bp
 from routes.meal_plan import meal_plan_bp
+from routes.activity_plan import activity_plan_bp
 
 
 def register_routes(app):
@@ -19,3 +20,4 @@ def register_routes(app):
     app.register_blueprint(admin_login_bp)
     app.register_blueprint(admin_dashboard_bp)
     app.register_blueprint(meal_plan_bp)
+    app.register_blueprint(activity_plan_bp)

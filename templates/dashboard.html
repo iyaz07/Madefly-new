@@ -10,9 +10,12 @@
     <a href="/admin/create-meal-plan">
         <button class="p-2 bg-green-900 text-white mb-4 rounded">Add a meal plan</button>
     </a>
-    <button class="p-2 bg-blue-900 text-white mb-4 rounded">Add an activity plan</button>
-    
-    <div class="bg-white shadow-md rounded p-6">
+    <a href="/admin/create-activity-plan">
+        <button class="p-2 bg-blue-900 text-white mb-4 rounded">Add an activity plan</button>
+    </a>
+
+    <!-- Meal Plans Section -->
+    <div class="bg-white shadow-md rounded p-6 mb-4">
         <h1 class="text-xl font-bold mb-4">Meal Plans</h1>
         
         {% if meal_plans %}
@@ -45,7 +48,42 @@
             </table>
         </div>
         {% else %}
-        <p class="text-center text-gray-500 mt-4">No meal plan created yet.</p>
+        <p class="text-center text-gray-500 mt-4">No Meal plan created yet.</p>
+        {% endif %}
+    </div>
+
+    <!-- Activity Plans Section -->
+    <div class="bg-white shadow-md rounded p-6">
+        <h1 class="text-xl font-bold mb-4">Activity Plans</h1>
+        {% if activity_plans %}
+        <div class="overflow-x-auto">
+            <table class="min-w-full bg-white border border-gray-300">
+                <thead class="bg-gray-100">
+                    <tr>
+                        <th class="py-2 px-4 border-b">ID</th>
+                        <th class="py-2 px-4 border-b">Morning</th>
+                        <th class="py-2 px-4 border-b">Evening</th>
+                        <th class="py-2 px-4 border-b">BMI Category</th>
+                        <th class="py-2 px-4 border-b">Age Category</th>
+                        <th class="py-2 px-4 border-b">Day of the Week</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for activity_plan in activity_plans %}
+                    <tr>
+                        <td class="py-2 px-4 border-b">{{ activity_plan.id }}</td>
+                        <td class="py-2 px-4 border-b">{{ activity_plan.morning }}</td>
+                        <td class="py-2 px-4 border-b">{{ activity_plan.evening }}</td>
+                        <td class="py-2 px-4 border-b">{{ activity_plan.bmi_category }}</td>
+                        <td class="py-2 px-4 border-b">{{ activity_plan.age_category }}</td>
+                        <td class="py-2 px-4 border-b">{{ activity_plan.day_of_week }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <p class="text-center text-gray-500 mt-4">No Activity plan created yet.</p>
         {% endif %}
     </div>
 </div>

@@ -1,7 +1,7 @@
 def calculate_bmi(inches, pounds):
-    weigh = pounds * 703
-    bmi = weigh / inches
-    return bmi / inches
+    bmi = (pounds * 703) / (inches ** 2)
+    return round(bmi, 2)  # Round to 2 decimal places
+
 
 
 def get_bmi_category(bmi):

@@ -1,11 +1,9 @@
 from models import db
-from datetime import datetime
-
 
 class ActivityPlan(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    morning_activity = db.Column(db.String(100))
-    afternoon_activity = db.Column(db.String(100))
-    evening_activity = db.Column(db.String(100))
+    morning = db.Column(db.String(100))
+    evening = db.Column(db.String(100))
+    bmi_category = db.Column(db.String(20))
     age_category = db.Column(db.String(20))
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    day_of_week = db.Column(db.String(20))
