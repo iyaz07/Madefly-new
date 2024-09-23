@@ -1,18 +1,18 @@
 Madefly
 A Gym Management App.
 Team:
-Iyaz ENIADE - 
-I will be completing the project alone
-It is so as to foster my research and coding skills
+Iyaz ENIADE - I will be completing the project alone. It is so as to foster my research and coding skills
 
-Technologies
+Technologies:
 FrontEnd: HTML, CSS, JS
-Backend: Mysql
+Backend: SQlite
 Framework: Flask, Tailwind
-Challenge statement
 
+Link to page:
+https://madefly-app.onrender.com/
+
+Challenge statement:
 The gym app aims to solve the problem of record keeping as well as managing memberships and facilitating communication between members and trainers, it also provides an online presence for the gym.
-
 While the Gym App System can streamline many aspects of gym management and member engagement, it may not directly address broader health and fitness issues or provide medical advice. It will not replace the expertise of qualified fitness professionals or healthcare providers. Moreover, it may not address specific challenges related to the physical infrastructure or operational logistics of individual gyms, such as equipment maintenance or facility management.
 
 The Gym App System will benefit multiple stakeholders within the fitness industry, including gym owners, trainers, and members. Gym owners can leverage the platform to enhance member satisfaction and increase retention rates. Trainers can use it to efficiently manage client schedules and monitor client progress.
